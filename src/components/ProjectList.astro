@@ -1,0 +1,100 @@
+---
+import { siteConfig } from "../config";
+
+const projects = siteConfig.projects ?? [];
+const hasProjects = projects.length > 0;
+---
+
+{
+  hasProjects && (
+    <section id="work" class="work">
+      <p class="meta section-label">精选作品</p>
+      <ul class="vp-plist">
+        {projects.map((project, index) => {
+          const primaryHref = project.href || project.github;
+          return (
+            <li class="vp-plist-row">
+              <span class="vp-plist-num">{String(index + 1).padStart(2, "0")}</span>
+              <div class="vp-plist-main">
+                <h2 class="vp-plist-title">
+                  {primaryHref && (
+                    <a
+                      class="vp-plist-link"
+                      href={primaryHref}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {project.title}
+                    </a>
+                  )}
+                  {!primaryHref && project.title}
+                </h2>
+                {project.summary && (
+                  <p class="vp-plist-summary">{project.summary}</p>
+                )}
+                {project.tags && project.tags.length > 0 && (
+                  <div class="vp-plist-tags">
+                    {project.tags.slice(0, 4).map((tag) => (
+                      <span class="vp-tag">{tag}</span>
+                    ))}
+                  </div>
+                )}
+                {(project.github || project.href) && (
+                  <div class="vp-plist-entries">
+                    {project.github && (
+                      <a
+                        class="vp-plist-entry"
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        GitHub ↗
+                      </a>
+                    )}
+                    {project.href && (
+                      <a
+                        class="vp-plist-entry"
+                        href={project.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        在线使用 ↗
+                      </a>
+                    )}
+                  </div>
+                )}
+              </div>
+              {project.year && <span class="vp-plist-year">{project.year}</span>}
+            </li>
+          );
+        })}
+      </ul>
+      {siteConfig.social?.github && (
+        <div class="more">
+          <a
+            class="vp-btn vp-btn-text"
+            href={siteConfig.social.github}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            查看全部项目 <span class="vp-btn-arrow">→</span>
+          </a>
+        </div>
+      )}
+    </section>
+  )
+}
+
+<style>
+  .work {
+    padding-bottom: var(--space-4);
+  }
+  .section-label {
+    margin: 0 0 var(--space-2);
+    color: var(--ink-muted);
+    text-transform: uppercase;
+  }
+  .more {
+    margin-top: var(--space-3);
+  }
+</style>

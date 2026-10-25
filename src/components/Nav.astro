@@ -1,0 +1,27 @@
+---
+import { siteConfig } from "../config";
+---
+
+<header class="vp-nav">
+  <a class="vp-nav-name" href="/">{siteConfig.name}</a>
+  <ul class="vp-nav-links">
+    <li>
+      <a class="vp-nav-link is-current" href="#work" aria-current="page">作品</a>
+    </li>
+    {
+      siteConfig.social?.github && (
+        <li>
+          <a
+            class="vp-nav-link"
+            href={siteConfig.social.github}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub
+          </a>
+        </li>
+      )
+    }
+    <li><a class="vp-nav-link" href="#contact">联系</a></li>
+  </ul>
+</header>
