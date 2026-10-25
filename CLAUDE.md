@@ -1,64 +1,30 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+本文件为 AI 辅助工具（Claude Code / ZCode 等）在本仓库工作时的指引。
 
-## Project Overview
+## 项目概述
 
-This is a modern, minimalist portfolio template built with Astro and Tailwind CSS v4. It's designed to be easily customizable through a single configuration file while maintaining a clean, professional appearance.
+暗色极简风格的中文个人作品集网站，单页站点。基于 [devportfolio](https://github.com/RyanFitzgerald/devportfolio) 模板（Astro 5 + Tailwind CSS v4 + TypeScript）改造：暗色主题、中文字体栈、中文文案与导航。
 
-## Tech Stack
-
-- **Astro**: Static site generator
-- **Tailwind CSS v4**: Utility-first CSS framework using the new @tailwindcss/vite plugin
-- **TypeScript**: For type-safe configuration
-- **Tabler Icons**: Icon library
-
-## Development Commands
+## 常用命令
 
 ```bash
-npm run dev       # Start development server
-npm run build     # Build for production
-npm run preview   # Preview production build
+npm run dev       # 开发服务器 http://localhost:4321
+npm run build     # 生产构建（输出 dist/）
+npm run preview   # 预览构建产物
 ```
 
-## Architecture
+## 架构
 
-The project follows a component-based architecture with all customization centralized in `src/config.ts`:
+内容与样式分离，所有站点内容集中在 `src/config.ts`（单一数据源）：
 
-- **Components** (`src/components/`): Individual Astro components for each section (Hero, About, Projects, Experience, Education, Header, Footer)
-- **Main Layout** (`src/pages/index.astro`): Single-page layout that imports all components
-- **Configuration** (`src/config.ts`): Single source of truth for all content and customization
+- `src/components/`：区块组件 Hero / About / Projects / Experience / Education / Header / Footer，均从 config 读取数据；数组为空的区块自动整段隐藏（Header/Footer 里的导航项同理）
+- `src/pages/index.astro`：单页入口，按序组装组件；`lang="zh-CN"`；使用系统字体栈，不加载外部 webfont
+- `src/config.ts`：姓名/职位/社交链接/介绍/技能/项目/经历/教育，`accentColor` 驱动全站强调色
+- `src/styles/global.css`：Tailwind v4 `@theme` 色板 tokens（navy 系背景、slate 系文字），组件内使用 `bg-navy-light`、`text-slate` 等类名
 
-### Key Architectural Decisions
+## 修改约定
 
-1. **Single Configuration File**: All content is managed through `src/config.ts` to make customization simple
-2. **Conditional Rendering**: Sections automatically hide if their data is removed from the config
-3. **Component Independence**: Each section is a self-contained component that reads from the config
-4. **Accent Color System**: Single `accentColor` in config propagates throughout the site via CSS custom properties
-
-## Important Implementation Details
-
-- The site uses Tailwind CSS v4 with the Vite plugin configuration
-- No linting or testing framework is currently configured
-- All components are in `.astro` format (not React/Vue/etc)
-- The project uses IBM Plex Mono font loaded from Google Fonts
-- Social links in the config are all optional and will conditionally render
-
-## Working with Components
-
-When modifying components:
-1. Components read directly from the imported `siteConfig` object
-2. Use Tailwind utility classes for styling
-3. Maintain the existing monospace font aesthetic
-4. Use Tabler Icons for consistency with existing icons
-
-## Configuration Structure
-
-The `src/config.ts` exports a `siteConfig` object with these sections:
-- Basic info: name, title, description, accentColor
-- Social links: email, linkedin, twitter, github (all optional)
-- aboutMe: string
-- skills: string[]
-- projects: array of {name, description, link, skills}
-- experience: array of {company, title, dateRange, bullets}
-- education: array of {school, degree, dateRange, achievements}
+- 改内容只动 `src/config.ts`；改背景/文字色板只动 `global.css` 的 `@theme` 变量；强调色改 `config.ts` 的 `accentColor`
+- 组件中的强调色均通过内联 `style` 引用 `siteConfig.accentColor`，不要硬编码
+- 新增区块时遵循现有模式：组件从 config 读数据 + 在 index.astro 引入 + Header/Footer 按需加导航

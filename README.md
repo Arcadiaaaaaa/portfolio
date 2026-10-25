@@ -1,187 +1,46 @@
-<img width="1943" height="1093" alt="image" src="https://github.com/user-attachments/assets/cc2ff955-17c2-48c7-81c8-479a0f061850" />
+# 个人作品集网站
 
-# DevPortfolio Template
+基于 [devportfolio](https://github.com/RyanFitzgerald/devportfolio) 模板（Astro 5 + Tailwind CSS v4）改造的暗色极简风格个人作品集，中文内容，单页站点：首屏介绍、关于我、项目作品、工作经历、教育经历、页脚。
 
-A modern, minimalist portfolio template built with Astro and Tailwind CSS. Perfect for developers looking to showcase their skills, experience, and projects in a clean, professional way.
+## 快速开始
 
-This was completely rebuilt from the ground up from V1. This template was built to be entirely ready to go with a quick config edit (see below) but also provides the ability to easily extend in whatever way you want.
-
-This template also comes with `CLAUDE.md` and `.cursor/rules` files for easy integration with your existing AI workflows.
-
-> **📬 Connect & Share!**  
-> For questions and updates, feel free to reach out on [**X (Twitter)**](https://x.com/rfitzio).  
-> If you've built and published your personal site with this template, I'd love to see it! Send me a DM 🚀
-
-## Preview
-
-To view a live preview of the site, [click here](https://ryanfitzgerald.github.io/devportfolio/).
-
-## Built With
-
-- **[Astro](https://astro.build/)** - Static site generator for modern web apps
-- **[Tailwind CSS v4](https://tailwindcss.com/)** - Utility-first CSS framework
-- **[Tabler Icons](https://tabler.io/icons)** - Free and open source icons
-- **TypeScript** - For type-safe configuration
-
-## Updating the Template
-
-### Configuration
-
-The template is designed to be easily customizable through the `src/config.ts` file. This single file controls:
-
-- **Personal Information**: Name, title, description
-- **Accent Color**: Primary color theme (changing this will change the accent color site wide)
-- **Social Links**: Email, LinkedIn, Twitter, GitHub (all optional)
-- **About Section**: Personal bio/description
-- **Skills**: List of technical skills
-- **Projects**: Project showcase with descriptions and links
-- **Experience**: Work history with bullet points
-- **Education**: Educational background and achievements
-
-If skills, projects, experience, or education are removed from the config, those sections will be hidden entirely.
-
-### Example structures
-
-Here's what the config data structure looks like for each section:
-
-#### Basic Information
-```typescript
-name: "Your Name",
-title: "Your Job Title",
-description: "Brief site description",
-accentColor: "#1d4ed8", // Hex color for theme
+```bash
+npm install     # 安装依赖（首次）
+npm run dev     # 本地开发，默认 http://localhost:4321
+npm run build   # 构建到 dist/
+npm run preview # 本地预览构建产物
 ```
 
-#### Social Links (all optional)
-```typescript
-social: {
-  email: "your-email@example.com",
-  linkedin: "https://linkedin.com/in/yourprofile",
-  twitter: "https://twitter.com/yourprofile", 
-  github: "https://github.com/yourusername",
-}
-```
+## 如何修改内容
 
-#### About Section
-```typescript
-aboutMe: "A paragraph describing yourself, your background, interests, and what you're passionate about. This appears in the About section of your portfolio."
-```
+**所有内容都集中在 `src/config.ts` 一个文件里**：姓名、职位、社交链接、自我介绍、技能、项目、经历、教育。文件内标注了【替换】的字段，逐项换成你的真实信息即可，保存后页面自动热更新。
 
-#### Skills
-```typescript
-skills: ["JavaScript", "React", "Node.js", "Python", "AWS", "Docker"]
-```
+不需要的板块（比如没有教育经历）把对应数组清空 `education: []` 即可，导航和内容会自动隐藏。
 
-#### Projects
-```typescript
-projects: [
-  {
-    name: "Project Name",
-    description: "Brief description of what the project does and its impact",
-    link: "https://github.com/yourusername/project",
-    skills: ["React", "Node.js", "AWS"], // Technologies used
-  }
-]
-```
+## 如何换配色
 
-#### Experience
-```typescript
-experience: [
-  {
-    company: "Company Name",
-    title: "Your Job Title",
-    dateRange: "Jan 2022 - Present",
-    bullets: [
-      "Led development of microservices architecture serving 1M+ users",
-      "Reduced API response times by 40% through optimization",
-      "Mentored team of 5 junior developers",
-    ],
-  }
-]
-```
+- **强调色**：改 `src/config.ts` 里的 `accentColor`（暗色主题推荐 `#64ffda` 青、`#7aa2f7` 蓝、`#bb9af7` 紫）
+- **背景/文字色板**：改 `src/styles/global.css` 里 `@theme` 下的 `--color-navy*`、`--color-slate*` 变量
 
-#### Education
-```typescript
-education: [
-  {
-    school: "University Name",
-    degree: "Bachelor of Science in Computer Science",
-    dateRange: "2014 - 2018",
-    achievements: [
-      "Graduated Magna Cum Laude with 3.8 GPA",
-      "Dean's List all semesters",
-      "President of Computer Science Club"
-    ]
-  }
-]
-```
-
-### Icons
-
-The template uses [Tabler Icons](https://tabler.io/icons) for all icons. If you wish to add more icons and have it look consistent with what's already there, you can browse through their extensive icon library.
-
-## Project Structure
+## 目录结构
 
 ```
-devportfolio/
-├── public/
-│   └── favicon.svg          # Site favicon
-├── src/
-│   ├── components/          # Astro components
-│   │   ├── About.astro      # About section
-│   │   ├── Education.astro  # Education section
-│   │   ├── Experience.astro # Work experience section
-│   │   ├── Footer.astro     # Site footer
-│   │   ├── Header.astro     # Navigation header
-│   │   ├── Hero.astro       # Hero/intro section
-│   │   └── Projects.astro   # Projects showcase
-│   ├── pages/
-│   │   └── index.astro      # Main page layout
-│   ├── styles/
-│   │   └── global.css       # Global styles
-│   └── config.ts            # Site configuration
-├── astro.config.mjs         # Astro configuration
-├── package.json             # Project dependencies
-├── tailwind.config.js       # Tailwind configuration
-└── tsconfig.json            # TypeScript configuration
+src/
+├── config.ts          # ★ 所有站点内容（唯一需要日常修改的文件）
+├── pages/index.astro  # 单页入口，组装各区块
+├── components/        # 各区块组件（Hero/About/Projects/Experience/Education/Header/Footer）
+└── styles/global.css  # 主题色板（@theme tokens）与全局字体
 ```
 
-## Local Development
+## 部署
 
-If you'd like to run it locally:
+**Vercel（最简单）**：把仓库推到 GitHub 后，在 [vercel.com](https://vercel.com) 导入仓库，框架选 Astro，零配置部署。
 
-```
-git clone https://github.com/RyanFitzgerald/devportfolio.git
-cd devportfolio
-npm install
-```
+**GitHub Pages**：在仓库 Settings → Pages 选择 GitHub Actions，Astro 官方提供的 workflow（Deploy an Astro site）开箱即用；注意若发布到 `https://<用户名>.github.io/<仓库名>/`，需要在 `astro.config.mjs` 里设置 `base: "/<仓库名>"`。
 
-After that, start up the Astro dev server with:
+**Netlify / Cloudflare Pages**：同样一键导入，构建命令 `npm run build`，产物目录 `dist`。
 
-```
-npm run dev
-```
+## 致谢
 
-## Deployment
-
-The template can be deployed to any static hosting service easily (and in most cases, completely free). Here are some options:
-
-- To deploy with Netlify, [click here](https://docs.astro.build/en/guides/deploy/netlify/).
-- To deploy with Vercel, [click here](https://docs.astro.build/en/guides/deploy/vercel/).
-- To deploy with GitHub Pages, [click here](https://docs.astro.build/en/guides/deploy/github/).
-- To deploy with Cloudflare Pages, [click here](https://docs.astro.build/en/guides/deploy/cloudflare/).
-- To deploy with Render, [click here](https://docs.astro.build/en/guides/deploy/render/).
-
-Want to deploy somewhere else? Find more guides [here](https://docs.astro.build/en/guides/deploy/).
-
-## Changelog
-
-To view the changelog, see CHANGELOG.md.
-
-## License
-
-This project is fully and completely MIT. See LICENSE.md.
-
-## Questions?
-
-Feel free to reach out on [X (Twitter)](https://x.com/rfitzio) if you have any questions or need help.
+- 模板：[devportfolio](https://github.com/RyanFitzgerald/devportfolio) by Ryan Fitzgerald（MIT License，见 LICENSE.md）
+- 暗色色板参考：[brittanychiang.com](https://github.com/bchiang7/v4) 的经典深海军蓝配色
