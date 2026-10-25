@@ -1,12 +1,13 @@
 {
-  "name": "devportfolio",
+  "name": "arcadia-portfolio",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "deploy": "astro build && wrangler pages deploy dist --project-name=arcadia-portfolio --branch=main"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.11",

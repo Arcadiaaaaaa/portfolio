@@ -1,5 +1,7 @@
 # 个人作品集网站
 
+线上地址：**https://arcadia-portfolio.pages.dev** （Cloudflare Pages）
+
 基于 [devportfolio](https://github.com/RyanFitzgerald/devportfolio) 模板（Astro 5 + Tailwind CSS v4）改造的暗色极简风格个人作品集，中文内容，单页站点：首屏介绍、关于我、项目作品、工作经历、教育经历、页脚。
 
 ## 快速开始
@@ -34,11 +36,17 @@ src/
 
 ## 部署
 
-**Vercel（最简单）**：把仓库推到 GitHub 后，在 [vercel.com](https://vercel.com) 导入仓库，框架选 Astro，零配置部署。
+**当前线路（Cloudflare Pages 直传）**：本机已用 wrangler 登录 Cloudflare（账号 2200735309@qq.com），项目名 `arcadia-portfolio`。改完内容后一条命令重新上线：
+
+```bash
+npm run deploy   # 构建并上传到 https://arcadia-portfolio.pages.dev
+```
+
+**Vercel**：把仓库推到 GitHub 后，在 [vercel.com](https://vercel.com) 导入仓库，框架选 Astro，零配置部署。
 
 **GitHub Pages**：在仓库 Settings → Pages 选择 GitHub Actions，Astro 官方提供的 workflow（Deploy an Astro site）开箱即用；注意若发布到 `https://<用户名>.github.io/<仓库名>/`，需要在 `astro.config.mjs` 里设置 `base: "/<仓库名>"`。
 
-**Netlify / Cloudflare Pages**：同样一键导入，构建命令 `npm run build`，产物目录 `dist`。
+**Netlify / Cloudflare Pages（Git 模式）**：同样一键导入，构建命令 `npm run build`，产物目录 `dist`。
 
 ## 致谢
 
