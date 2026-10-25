@@ -29,27 +29,30 @@ export const siteConfig = {
   // 【替换】技能标签（关于我下方的胶囊标签，数量随意）
   skills: ["JavaScript", "TypeScript", "React", "Node.js", "Python", "SQL"],
 
-  // 【替换】项目作品：name 项目名、description 一两句话介绍、link 项目链接（线上地址或仓库，没有可删掉 link 字段）、skills 用到的技术
+  // 【替换】项目作品：name 项目名、description 一两句话介绍、link 在线演示地址（直接使用入口）、github 源码仓库地址，两个入口都可选，不需要的删掉对应字段即可、skills 用到的技术
   projects: [
     {
       name: "项目一（示例标题）",
       description:
         "用一两句话说明这个项目解决了什么问题、亮点是什么。例如：一个帮助用户解决某某痛点的 Web 应用，支持某某特性，当前已有多少用户。",
-      link: "https://github.com/yourname/your-project",
+      link: "https://your-demo.example.com",
+      github: "https://github.com/yourname/your-project",
       skills: ["React", "Node.js"],
     },
     {
       name: "项目二（示例标题）",
       description:
         "项目描述占位。建议结构：做了什么 + 用了什么技术 + 取得了什么结果（数据最有说服力，如性能提升、用户量）。",
-      link: "https://github.com/yourname/your-project",
+      link: "https://your-demo.example.com",
+      github: "https://github.com/yourname/your-project",
       skills: ["Vue", "Python"],
     },
     {
       name: "项目三（示例标题）",
       description:
         "项目描述占位。没有第三个项目就删掉这一整块花括号；项目多也可以继续往下加。",
-      link: "https://github.com/yourname/your-project",
+      link: "https://your-demo.example.com",
+      github: "https://github.com/yourname/your-project",
       skills: ["Docker", "AWS"],
     },
   ],
