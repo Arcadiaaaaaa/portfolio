@@ -7,7 +7,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "deploy": "astro build && wrangler pages deploy dist --project-name=arcadia-portfolio --branch=main"
+    "deploy": "astro build && npx wrangler pages deploy dist --project-name=arcadia-portfolio --branch=main"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.11",
