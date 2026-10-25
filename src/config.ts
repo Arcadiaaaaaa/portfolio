@@ -32,12 +32,13 @@ export const siteConfig = {
   // 【替换】项目作品：name 项目名、description 一两句话介绍、link 在线演示地址（直接使用入口）、github 源码仓库地址，两个入口都可选，不需要的删掉对应字段即可、skills 用到的技术
   projects: [
     {
-      name: "项目一（示例标题）",
+      name: "是啊吃什么",
       description:
-        "用一两句话说明这个项目解决了什么问题、亮点是什么。例如：一个帮助用户解决某某痛点的 Web 应用，支持某某特性，当前已有多少用户。",
+        "帮你决定「今天吃什么」的小工具：按早/午/晚餐段随机推荐餐品、饮品与拼菜窗口，内置偏好加权随机算法（👍/👎/忌口反馈、权重时间衰减、防连抽，附 18 项单测）、价格区间过滤、AI 批量导入菜单与饮食统计。零依赖纯静态应用，支持 PWA 离线使用。",
+      // 【替换】部署上线后填入线上地址（见是啊吃什么仓库的 DEPLOY.md）；未部署前先删掉或留占位
       link: "https://your-demo.example.com",
-      github: "https://github.com/yourname/your-project",
-      skills: ["React", "Node.js"],
+      github: "https://github.com/Arcadiaaaaaa/what-to-eat",
+      skills: ["JavaScript", "PWA", "Service Worker"],
     },
     {
       name: "项目二（示例标题）",
