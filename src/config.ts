@@ -30,6 +30,15 @@ export const siteConfig = {
   // 没有在线版的项目删掉 href，只留 GitHub；没有仓库就删掉 github
   projects: [
     {
+      title: "旅行记录",
+      summary:
+        "我用它集中记录火车、公交与地铁出行，回顾花费和里程；实践换乘联动、统计看板与安全登录。在线版需登录。",
+      href: "https://travel-log.2200735309.workers.dev",
+      github: "https://github.com/Arcadiaaaaaa/travel-log/tree/codex/cloudflare-deploy",
+      tags: ["Python", "JavaScript / PWA", "SQLite / D1", "Cloudflare Workers"],
+      year: "2026",
+    },
+    {
       title: "是啊吃什么",
       summary:
         "帮你决定「今天吃什么」的小工具：按早/午/晚餐段随机推荐餐品、饮品与拼菜窗口。做它是因为选择困难，学到了偏好加权随机（反馈、时间衰减、防连抽）与 PWA 离线。",
