@@ -39,6 +39,14 @@ export const siteConfig = {
       year: "2026",
     },
     {
+      title: "问题雷达",
+      summary:
+        "我每天在这里速览定时检索来的问题和 B 站简报，点「值得 / 不值得」回流给下次检索；实践定时 AI 检索、跨设备同步与反馈闭环。在线版需登录。",
+      href: "https://question-radar.2200735309.workers.dev",
+      tags: ["JavaScript", "Python", "Cloudflare Workers / KV", "Claude Code 定时任务"],
+      year: "2026",
+    },
+    {
       title: "是啊吃什么",
       summary:
         "帮你决定「今天吃什么」的小工具：按早/午/晚餐段随机推荐餐品、饮品与拼菜窗口。做它是因为选择困难，学到了偏好加权随机（反馈、时间衰减、防连抽）与 PWA 离线。",
